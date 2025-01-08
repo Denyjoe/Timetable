@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
+from django.contrib import admin #type: ignore
+from django.contrib.auth.admin import UserAdmin #type: ignore
 from .models import *
-from django import forms
+from django import forms #type: ignore
+from . import models
 
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('DepartmentName', 'HeadOfDepartment', 'registered_date_badge')
@@ -44,6 +45,13 @@ class InstructorAdmin(UserAdmin):
         return format_html('<i class="fas fa-calendar-alt text-info"></i><span class="badge badge-dark p-2 ml-2 text-white">{}</span>', obj.RegisteredDate.strftime('%Y-%m-%d'))
     registered_date_badge.short_description = 'Registered Date'
 admin.site.register(Instructor, InstructorAdmin)
+
+class ModuleAdmin(admin.ModelAdmin):
+#    list_display=('')
+   search_fields = ('Programe')
+
+   admin.site.register(Module)
+
 
 
 class TimeTableMainAdmin(admin.ModelAdmin):

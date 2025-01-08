@@ -81,4 +81,4 @@ def index(request):
 
     
 def support(request):
-    return render(request, 'pages/support.html')
+    return render(request, 'support.html')

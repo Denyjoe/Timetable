@@ -85,13 +85,17 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': 'timetable',
+    'USER':'newuser',
+    'PASSWORD': 'password',
+    'HOST':'localhost',
+    'PORT':'3306',
+   }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -143,7 +147,7 @@ JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_header": "",
+    "site_header": "DIGITAL-TIMETABLE",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
 
@@ -165,7 +169,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "TIMETABLE APP",
 
     # Copyright on the footer
-    "copyright": "denyjoe +255782183406",
+    "copyright": "Denyjoe +255782183406",
 
     # List of model admins to search from the search bar, search bar omitted if excluded
     # If you want to use a single search field you dont need to use a list, you can use a simple string
@@ -242,7 +246,7 @@ JAZZMIN_SETTINGS = {
         "auth": "fas fa-users-cog",
         "auth.user": "fas fa-user",
         "auth.Group": "fas fa-users text-info",
-        "app.Department": "fas fa-building text-",
+        "app.Department": "fas fa-building text-info",
         "app.Instructor": "fas fa-user text-info",
         "app.TimeTableMain": "fas fa-calendar text-info",
         "app.CourseName": "fas fa-book-open text-info",
@@ -269,7 +273,7 @@ JAZZMIN_SETTINGS = {
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,
     # Whether to show the UI customizer on the sidebar
-    "show_ui_builder": True,
+    "show_ui_builder": False,
 
     ###############
     # Change view #
@@ -307,8 +311,8 @@ JAZZMIN_UI_TWEAKS = {
     "sidebar_nav_compact_style": False,
     "sidebar_nav_legacy_style": True,
     "sidebar_nav_flat_style": False,
-    "theme": "default",
-    "dark_mode_theme": "None",
+    "theme": "sandstone",
+    "dark_mode_theme": None,
     "button_classes": {
         "primary": "btn-primary",
         "secondary": "btn-secondary",

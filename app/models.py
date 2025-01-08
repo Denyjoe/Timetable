@@ -1,6 +1,6 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.utils.html import format_html
+from django.db import models #type: ignore
+from django.contrib.auth.models import AbstractUser #type: ignore
+from django.utils.html import format_html  #type: ignore
 DAY_CHOICES = [
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
@@ -65,6 +65,7 @@ class Venue(models.Model):
  
 
 class TimeTable(models.Model):
+    id = models.IntegerField(primary_key=True)
     CourseName = models.ForeignKey(CourseName, on_delete=models.CASCADE)
     Instructor=models.ForeignKey(Instructor,on_delete=models.CASCADE)   
     Venue = models.ForeignKey(Venue,on_delete=models.CASCADE) 
@@ -74,4 +75,12 @@ class TimeTable(models.Model):
     Programme=models.ForeignKey(TimeTableMain,on_delete=models.CASCADE)   
     RegisteredDate = models.DateTimeField(auto_now_add=True)
     SessionType= models.CharField(max_length=100, choices=SESSION)
-     
+
+class Module(models.Model):
+    Module_id = models.IntegerField(primary_key=True)
+    Module_name= models.CharField(max_length=200)
+    DepartmentName = models.ForeignKey(Department,on_delete=models.CASCADE)
+    def __str__(self):
+        return self.Module_name
+
+    
